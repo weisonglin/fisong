@@ -1,9 +1,70 @@
+
 <?php
-require_once("header.php");
-$view = new View;
-$view->output_header();
+
+session_start();
+error_reporting(0);
+
+$error_message='';
+if($_POST['regi']){
+	if($_POST['name'] && $_POST['password']&& $_POST['confirmpassword'])
+	{
+		$connection=mysql_connect("db4free.net","weisong","victor1234") or die("host connection error");
+		mysql_select_db("fisonguser",$connection) or die("database error");
+		$name=mysql_real_escape_string($_POST['name']);
+		$password = mysql_real_escape_string($_POST['password']);
+		$confirmpassword=mysql_real_escape_string($_POST['confirmpassword']);
+		$gender=mysql_real_escape_string($_POST['gender']);
+		$age=mysql_real_escape_string($_POST['age']);
+		$country=mysql_real_escape_string($_POST['country']);
+		$job=mysql_real_escape_string($_POST['job']);
+
+		$user=mysql_fetch_array(mysql_query("SELECT * FROM `user` WHERE `name`='$name'"));
+		if($user!=null)
+		{
+			$error_message="some one use this name already ";
+		}else if($confirmpassword!=$password)
+		{
+			$error_message="you have entered two differet passwords";
+		}
+		else  
+		{
+			mysql_query("INSERT INTO `user` (`id`, `name`, `password`, `gender`, `age`, `country`, `job`, `lastong`) VALUES (NULL, '$name', '$password', '$gender', '$age', '$country', '$job', '')");
+			$_SESSION['name']=$name;
+			header('Location: main.php');	
+
+		}
+	}
+}
 
 ?>
+
+
+
+
+  <head>
+   <title>fiSong</title>
+      <meta charset='UTF-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <link rel='icon' href='http://localhost/example/image/m0.jpg'>
+
+
+
+       <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="http://localhost/example/css/style.css">
+       </head>
+        <ul>
+  		<li><a href="">fiSong</a></li>
+
+  		<ul style="float:right;list-style-type:none;">
+    		<li><a class="active" href="http://localhost/example/login.php">Login</a></li>
+  		</ul>
+	</ul>
 
 
 	<body>
@@ -12,21 +73,25 @@ $view->output_header();
             </div>
 
              <div class="container">
-             	
-		  <p>please fill out for registration</p>
-		  <form role="form">
+             	 <?php
+		  	if($error_message!=''){
+		  		echo"<p class='error' align='center' style='color: red;'>{$error_message}</p>";}
+		  	else{
+		  		echo"<p>please fill out for registration</p>";}
+		  ?>
+		  <form role="form" method="post">
 		  	<div class="form-group">
 			  <label for="usr">Name:</label>
-			  <input type="text" class="form-control" id="usr">
+			  <input type="text" name="name" class="form-control" id="usr">
 			</div>
 
 			<div class="form-group">
 			  <label for="pwd">Password:</label>
-			  <input type="password" class="form-control" id="pwd">
+			  <input type="password" name="password" class="form-control" id="pwd">
 			</div>
 			<div class="form-group">
 			  <label for="pwd">Confirm:</label>
-			  <input type="password" class="form-control" id="pwd">
+			  <input type="password" name="confirmpassword"  class="form-control" id="pwd">
 			</div>
 
 
@@ -34,7 +99,7 @@ $view->output_header();
 			<div id="row">
 		    <div id="cell">
 		      <label for="sel1">Gender</label>
-		      <select class="form-control" id="sel1">
+		      <select class="form-control" name="gender" id="sel1">
 		        <option>Male</option>
 		        <option>Female</option>
 
@@ -43,7 +108,7 @@ $view->output_header();
 
 		      <div id="cell">
 		      <label for="sel1">Age</label>
-		      <select class="form-control" id="sel1">
+		      <select class="form-control" name="age" id="sel1">
 		        <option>0-20</option>
 		        <option>21-40</option>
 		        <option>41-60</option>
@@ -53,7 +118,7 @@ $view->output_header();
 
 		      <div id="cell">
 		      <label for="sel1">Country</label>
-		      <select class="form-control" id="sel1">
+		      <select class="form-control" name="country" id="sel1">
 		        <option>USA</option>
 		        <option>China</option>
 		        <option>Japan</option>
@@ -63,7 +128,7 @@ $view->output_header();
 
 		      <div cell="cell">
 		      <label for="sel1">Job</label>
-		      <select class="form-control" id="sel1">
+		      <select class="form-control" name="job" id="sel1">
 		        <option>Student</option>
 		        <option>Teacher</option>
 		        <option>Software Engineer</option>
@@ -75,7 +140,7 @@ $view->output_header();
 		</div>
 		<br></br>
 
-		     <button type="submit" class="btn btn-primary btn-lg btn-block"  id="sumbitB">fiSong</button>
+		     <button type="submit" name="regi" value="regi" class="btn btn-primary btn-lg btn-block"  id="sumbitB">fiSong</button>
 		</form>
 			</div>
 </body>
