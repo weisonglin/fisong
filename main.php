@@ -1,5 +1,8 @@
 <?php
 session_start();
+
+if($_SESSION['name']==null)
+        header('Location: login.php');
 ?>
 
 <head>
@@ -20,11 +23,12 @@ session_start();
   <link type='text/css' rel='stylesheet' href='http://localhost/example/css/style.css'>
        </head>
         <ul>
-      <li><a href=''>fiSong</a></li>
+      <li><a href='main.php'>fiSong</a></li>
 
       <ul style='float:right;list-style-type:none;'>
+        <?php if($_SESSION['admin']==1)  echo "<li><a href='admin.php'>Admin Pannel</a></li>";  ?>
        <?php echo "<li><a class='active'>WELCOME  " . $_SESSION['name']. "</a></li>" ?>
-      <li><a href="login.php?action=logout">Logout</a></li>
+      <li><a href="logout.php">Logout</a></li>
       </ul>
   </ul>
 

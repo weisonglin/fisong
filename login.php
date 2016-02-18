@@ -25,15 +25,13 @@ if($_POST['login']){
 		}
 		else
 		{
+			$_SESSION['admin']=$user['admin'];
 			$_SESSION['name']=$name;
 			header('Location: main.php');	
 		}
 	}
 }
-if($_GET['logout']!=null)
-{
-	 session_unregister('name');
-}
+
 
 ?>
 

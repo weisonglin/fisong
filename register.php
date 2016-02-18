@@ -28,7 +28,7 @@ if($_POST['regi']){
 		}
 		else  
 		{
-			mysql_query("INSERT INTO `user` (`id`, `name`, `password`, `gender`, `age`, `country`, `job`, `lastong`) VALUES (NULL, '$name', '$password', '$gender', '$age', '$country', '$job', '')");
+			mysql_query("INSERT INTO `user` (`id`, `name`, `password`, `gender`, `age`, `country`, `job`, `lastong`,`admin`) VALUES (NULL, '$name', '$password', '$gender', '$age', '$country', '$job', '1','0')");
 			$_SESSION['name']=$name;
 			header('Location: main.php');	
 

@@ -102,3 +102,14 @@ li a:hover:not(.active) {
   #cell {
     display: table-cell;
     }
+
+
+th {
+  color:purple;
+}
+
+
+.font{
+  color:blue;
+  font-weight: bold;
+}
