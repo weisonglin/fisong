@@ -3,36 +3,45 @@ session_start();
 if($_SESSION['admin']!=1)
         header('Location: main.php');
 
-
+error_reporting(0);
 
 ?>
 
 <?php
-error_reporting(0);
+
 $error_message='';
 if($_POST['addsong']){
-  if($_POST['title'] && $_POST['lyric']&& $_POST['song'])
+  if($_POST['title'] && $_POST['lyric']&& isset($_FILES['song']))
   {
     $connection=mysql_connect("db4free.net","weisong","victor1234") or die("host connection error");
     mysql_select_db("fisonguser",$connection) or die("database error");
     $title=mysql_real_escape_string($_POST['title']);
     
     $lyric=mysql_real_escape_string($_POST['lyric']);
-    $song=mysql_real_escape_string($_POST['song']);
+    //$song=mysql_real_escape_string($_POST['song']);
     $user=mysql_fetch_array(mysql_query("SELECT * FROM `songs` WHERE `title`='$title'"));
+
+
+    $file_name = $_FILES['song']['name'];
+      $file_size = $_FILES['song']['size'];
+      $file_tmp = $_FILES['song']['tmp_name'];
+      $file_type = $_FILES['song']['type'];
     if($user!=null)
     {
       $error_message="this song already exsit";
     }
     else  
     {
-      mysql_query("INSERT INTO `songs` (`id`, `title`, `lyric`, `song`, `chart`) VALUES (NULL, '$title', '$lyric', '$song', '')");
+      mysql_query("INSERT INTO `songs` (`id`, `title`, `lyric`, `song`, `chart`) VALUES (NULL, '$title', '$lyric', '$file_name', '')");
+      move_uploaded_file($file_tmp,"song/".$file_name);
       header('Location: admin.php');
-    }
+    }    
   }
 }
 
 ?>
+
+
 
 <head>
    <title>fiSong</title>
@@ -75,7 +84,7 @@ if($_POST['addsong']){
         else{
           echo"<p>please fill out for adding a song</p>";}
       ?>
-      <form role="form" method="post">
+      <form role="form" method="post"    enctype="multipart/form-data">
         <div class="form-group">
         <label for="usr">Title:</label>
         <input type="text" name="title" class="form-control" id="usr">
@@ -85,9 +94,12 @@ if($_POST['addsong']){
         <label for="usr">Lyric:</label>
         <input type="text" name="lyric" class="form-control" id="usr">
       </div>
-      <div class="form-group">
+
+
+      <div class ="form-group">       
         <label for="usr">Song:</label>
-        <input type="text" name="song"  class="form-control" id="usr">
+         <input type = "file" name = "song" />         
+        
       </div>
 
       <button type="submit" name="addsong" value="addsong" class="btn btn-primary btn-lg btn-block"  id="sumbitB">Add Song</button>

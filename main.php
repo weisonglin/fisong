@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+error_reporting(0);
 if($_SESSION['name']==null)
         header('Location: login.php');
 ?>
@@ -26,8 +26,8 @@ if($_SESSION['name']==null)
       <li><a href='main.php'>fiSong</a></li>
 
       <ul style='float:right;list-style-type:none;'>
-        <?php if($_SESSION['admin']==1)  echo "<li><a href='admin.php'>Admin Pannel</a></li>";  ?>
-       <?php echo "<li><a class='active'>WELCOME  " . $_SESSION['name']. "</a></li>" ?>
+        <?php if($_SESSION['admin']==1)  {echo "<li><a href='admin.php'>Admin Pannel</a></li>";}  ?>
+       <?php echo "<li><a class='active'>WELCOME  " . $_SESSION['name']." </a></li>" ?>
       <li><a href="logout.php">Logout</a></li>
       </ul>
   </ul>
