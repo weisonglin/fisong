@@ -20,7 +20,7 @@ if($_SESSION['name']==null)
 
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js'></script>
     <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
-  <link type='text/css' rel='stylesheet' href='http://localhost/example/css/style.css'>
+  <link type='text/css' rel='stylesheet' href='http://localhost/example/css/style.css' >
        </head>
         <ul>
       <li><a href='main.php'>fiSong</a></li>

@@ -75,8 +75,18 @@ li a {
     text-decoration: none;
 }
 
-li a:hover:not(.active) {
+li a:hover:not(.active) ,li a:visited:not(.active){
     background-color: #111;
+    text-decoration:none;
+    color :white;
+}
+
+
+a.active:hover {
+   
+    color:white;
+    text-decoration: none;
+    
 }
 
 .active {
@@ -110,6 +120,7 @@ th {
 
 
 .font{
-  color:blue;
+  color:chartreuse;
   font-weight: bold;
 }
+

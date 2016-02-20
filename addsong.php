@@ -98,7 +98,7 @@ if($_POST['addsong']){
 
       <div class ="form-group">       
         <label for="usr">Song:</label>
-         <input type = "file" name = "song" />         
+         <input type = "file" name = "song" class="form-control" id="usr"/>         
         
       </div>
 

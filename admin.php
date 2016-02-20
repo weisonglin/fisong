@@ -68,11 +68,12 @@ if($_SESSION['admin']!=1)
                     //echo $num;
                     $song_id=mysql_result($songs_list, $i,"id");
                     $song_name=mysql_result($songs_list, $i,"title");
+                    $song_song=mysql_result($songs_list,$i, "song");
                     echo "<tr>
                     <td><font class='font'>$song_name</font></td>
           
                       
-                    <td><a href='option.php?i_id=$song_id' >Delete</a></td>
+                    <td><a href='option.php?i_id=$song_id&song=$song_song' >Delete</a></td>
                     </tr>";
                     $i++;
                   }

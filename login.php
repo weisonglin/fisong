@@ -60,7 +60,7 @@ if($_POST['login']){
   		<li><a href=''>fiSong</a></li>
 
   		<ul style='float:right;list-style-type:none;'>
-    		<li><a class='active' href='http://localhost/example/register.php'>Register</a></li>
+    		<li><a  href='http://localhost/example/register.php'>Register</a></li>
   		</ul>
 	</ul>
 
