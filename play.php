@@ -3,6 +3,10 @@ session_start();
 error_reporting(0);
 if($_SESSION['name']==null)
         header('Location: login.php');
+
+$song=$_GET['play'];
+$lyric=$_GET['lyric'];
+$title=$_GET['title'];
 ?>
 
 <head>
@@ -21,6 +25,12 @@ if($_SESSION['name']==null)
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js'></script>
     <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
   <link type='text/css' rel='stylesheet' href='http://localhost/example/css/style.css' >
+  <style type="text/css">
+body
+{
+    background-image:url('image/m7.jpg');
+}
+</style>
        </head>
         <ul>
       <li><a href='main.php'>fiSong</a></li>
@@ -31,3 +41,26 @@ if($_SESSION['name']==null)
       <li><a href="logout.php">Logout</a></li>
       </ul>
   </ul>
+
+<body>
+
+  <div class='t'>
+                <h1  id='fisongT'> <?php  echo $title ?></h1>
+            </div>
+
+
+   <div class='container'>
+    
+  <?php 
+  echo "<audio controls>
+    <source src='song/$song' type='audio/mpeg'/>
+    </audio>";
+  ?>
+
+  
+    <p><?php echo "$lyric" ?></p>
+
+
+  
+</div>
+</body>

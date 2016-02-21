@@ -23,8 +23,10 @@ if($_POST['searchbyT']){
     else
     {
       $_SESSION['lastsong']=$song['id'];
+      $mp3name=$song['song'];
+      $lyric=$song['lyric'];
       
-      header('Location: play.php'); 
+      header('Location: play.php?play='.$mp3name.'&lyric='.$lyric.'&title='.$name); 
     }
   }
 }
