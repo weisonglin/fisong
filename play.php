@@ -4,9 +4,18 @@ error_reporting(0);
 if($_SESSION['name']==null)
         header('Location: login.php');
 
-$song=$_GET['play'];
-$lyric=$_GET['lyric'];
-$title=$_GET['title'];
+//$song=$_GET['play'];
+//$lyric=$_GET['lyric'];
+//$title=$_GET['title'];
+
+$id=$_GET['id'];
+$connection=mysql_connect("db4free.net","weisong","victor1234") or die("host connection error");
+    mysql_select_db("fisonguser",$connection) or die("database error");
+
+    $songinfo=mysql_fetch_array(mysql_query("SELECT * FROM `songs` WHERE `id`='$id'"));
+    $song=$songinfo['song'];
+    $lyric=$songinfo['lyric'];
+    $title=strtoupper($songinfo['title']);
 ?>
 
 <head>

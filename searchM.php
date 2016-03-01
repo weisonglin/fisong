@@ -5,6 +5,21 @@ if($_SESSION['name']==null)
         header('Location: login.php');
 ?>
 
+<?php
+if($_POST['bestM'])
+{
+
+ // $words=mysql_real_escape_string($_POST['words']);
+  //header('Location: bestm.php?words='.$words); 
+
+  $words=$_POST['words'];
+  header('Location: bestm.php?words='.$words); 
+}
+
+?>
+
+
+
 <head>
    <title>fiSong</title>
       <meta charset='UTF-8'>
@@ -40,19 +55,13 @@ if($_SESSION['name']==null)
 
             <div class="container">
               <h2 >fiSong Best Matching</h2>
-              <form role="form">
+              <form role="form" method="post">
                 <div class="form-group">
                   <label for="title">Matching:</label>
-                  <input type="title" class="form-control" id="email" placeholder="Enter any words here">
+                  <input type="title" class="form-control"  name="words" id="email" placeholder="Enter any words here">
                 </div>
-                <!-- <div class="form-group">
-                  <label for="pwd">Password:</label>
-                  <input type="password" class="form-control" id="pwd" placeholder="Enter password">
-                </div>
-                <div class="checkbox">
-                  <label><input type="checkbox"> Remember me</label>
-                </div> -->
-                <button type="submit" class="btn btn-primary btn-lg btn-block">fiSong</button>
+
+                <button type="submit" value="bestM" name="bestM" class="btn btn-primary btn-lg btn-block">fiSong</button>
               </form>
             </div>
         </body>

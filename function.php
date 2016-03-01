@@ -15,8 +15,9 @@ function contoarray($argv)
     return $result;
 }
 
-function kmptable($P)
+function kmptable($W)
 {
+    $P=contoarray($W);
     $length = count($P);
     $shifttable = array();
     $shifttable[0] = 1;        
@@ -29,8 +30,10 @@ function kmptable($P)
     }
     return $shifttable;
 }
-function kmp($T, $W, $P)
+function kmp($T, $W1, $P1)
 {
+    $W=contoarray($W1);
+    $P=contoarray($P1);
     $Plen=count($P);
     $Wlen=count($W);
     $result=0;
@@ -57,8 +60,10 @@ function kmp($T, $W, $P)
     return FALSE;
 }
 
-function LCS($P, $W)
+function LCS($P1, $W1)
 {
+    $P=contoarray($P1);
+    $W=contoarray($W1);
     $Plen=count($P);
     $Wlen=count($W);
     $a=array();

@@ -13,7 +13,7 @@ if($_POST['searchbyT']){
     $connection=mysql_connect("db4free.net","weisong","victor1234") or die("host connection error");
     mysql_select_db("fisonguser",$connection) or die("database error");
 
-    $name=mysql_real_escape_string($_POST['searchtitle']);
+    $name=mysql_real_escape_string(strtolower($_POST['searchtitle']));
  
     $song=mysql_fetch_array(mysql_query("SELECT * FROM `songs` WHERE `title`='$name'"));
     if($song==null)
@@ -23,10 +23,10 @@ if($_POST['searchbyT']){
     else
     {
       $_SESSION['lastsong']=$song['id'];
-      $mp3name=$song['song'];
-      $lyric=$song['lyric'];
-      
-      header('Location: play.php?play='.$mp3name.'&lyric='.$lyric.'&title='.$name); 
+      //$mp3name=$song['song'];
+     // $lyric=$song['lyric'];
+      $id=$song['id'];
+      header('Location: play.php?id='.$id); 
     }
   }
 }
