@@ -22,9 +22,6 @@ if($_POST['searchbyT']){
     }
     else
     {
-      $_SESSION['lastsong']=$song['id'];
-      //$mp3name=$song['song'];
-     // $lyric=$song['lyric'];
       $id=$song['id'];
       header('Location: play.php?id='.$id); 
     }
