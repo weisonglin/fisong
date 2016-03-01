@@ -27,6 +27,11 @@ if($_POST['login']){
 		{
 			$_SESSION['admin']=$user['admin'];
 			$_SESSION['name']=$name;
+			$_SESSION['gender']=$user['gender'];
+			$_SESSION['age']=$user['age'];
+			$_SESSION['country']=$user['country'];
+			$_SESSION['job']=$user['job'];
+			$_SESSION['lastsong']=$user['lastsong'];
 			header('Location: main.php');	
 		}
 	}
