@@ -65,7 +65,7 @@ if($_SESSION['name']==null)
 
                   <div class="col-md-4">
                      <h4 class='text-center'>recommandation</h4>
-                    <a href="http://localhost/example/searchM.php" class="">
+                    <a href="http://localhost/example/recom.php" class="">
                         
                         <div class='quicksearchthumbnail thumbnail'>
                             <img src='http://localhost/example/image/m3.jpg' alt='#' class='img-rounded'  style="width:300px;height:300px">

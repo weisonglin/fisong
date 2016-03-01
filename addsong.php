@@ -32,7 +32,7 @@ if($_POST['addsong']){
     }
     else  
     {
-      mysql_query("INSERT INTO `songs` (`id`, `title`, `lyric`, `song`, `chart`) VALUES (NULL, '$title', '$lyric', '$file_name', '')");
+      mysql_query("INSERT INTO `songs` (`id`, `title`, `lyric`, `song`, `Male`,`Female`,`0-20`,`21-40`,`41-60`,`above 61`,`USA`,`China`,`Japan`,`Korea`,`Student`,`Teacher`,`Software Engineer`,`Accountant`,`Sales`) VALUES (NULL, '$title', '$lyric', '$file_name', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0')");
       move_uploaded_file($file_tmp,"song/".$file_name);
       header('Location: admin.php');
     }    
