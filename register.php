@@ -28,8 +28,15 @@ if($_POST['regi']){
 		}
 		else  
 		{
-			mysql_query("INSERT INTO `user` (`id`, `name`, `password`, `gender`, `age`, `country`, `job`, `lastong`,`admin`) VALUES (NULL, '$name', '$password', '$gender', '$age', '$country', '$job', NULL,'0')");
+			mysql_query("INSERT INTO `user` (`id`, `name`, `password`, `gender`, `age`, `country`, `job`, `lastsong`,`admin`) VALUES (NULL, '$name', '$password', '$gender', '$age', '$country', '$job', NULL,'0')");
+			$_SESSION['admin']=0;
 			$_SESSION['name']=$name;
+			$_SESSION['gender']=$gender;
+			$_SESSION['age']=$age;
+			$_SESSION['country']=$country;
+			$_SESSION['job']=$job;
+			$_SESSION['lastsong']=NULL;
+			$_SESSION['todaysong']=NULL;
 			header('Location: main.php');	
 
 		}
@@ -109,10 +116,10 @@ if($_POST['regi']){
 		      <div id="cell">
 		      <label for="sel1">Age</label>
 		      <select class="form-control" name="age" id="sel1">
-		        <option>0-20</option>
-		        <option>21-40</option>
-		        <option>41-60</option>
-		        <option>above 61</option>
+		        <option>0_20</option>
+		        <option>21_40</option>
+		        <option>41_60</option>
+		        <option>above_61</option>
 		      </select>
 			</div>
 
@@ -131,7 +138,7 @@ if($_POST['regi']){
 		      <select class="form-control" name="job" id="sel1">
 		        <option>Student</option>
 		        <option>Teacher</option>
-		        <option>Software Engineer</option>
+		        <option>Software_Engineer</option>
 		        <option>Accountant</option>
 		        <option>Sales</option>
 		      </select>

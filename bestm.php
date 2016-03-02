@@ -72,11 +72,15 @@ $result=array_keys($score);
 
 
   <body>
+      <div class="t">
+                <h1  id="fisongT"> fiSong Best Matching</h1>
+                </div>
+
 
             <div class="container">
-                <a href="addsong.php" class="btn btn-primary btn-lg active" role="button">Add a Song</a>
-
+                
                 <table class="table table-hover">
+                  <h2 >fiSong Best Matching</h2>
                   <thead>
                   <tr>
                     <th><font class='font'>Songs</font></th>
