@@ -66,7 +66,7 @@ if($_SESSION['name']==null)
                   </div>
 
                   <div class="col-md-4">
-                     <h4 class='text-center'>recommandation</h4>
+                     <h4 class='text-center'>Recommandation</h4>
                     <a href="http://localhost/example/recom.php" class="">
                         
                         <div class='quicksearchthumbnail thumbnail'>
